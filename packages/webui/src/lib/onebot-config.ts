@@ -1,7 +1,7 @@
 import type { MessageFormat, OneBotConfig, StatusCommandConfig } from '@/types';
 
 const DEFAULT_STATUS_COMMAND: StatusCommandConfig = {
-    enabled: true,
+    enabled: false,
     swallow: false,
     cooldownSeconds: 5,
     trigger: '#sl',

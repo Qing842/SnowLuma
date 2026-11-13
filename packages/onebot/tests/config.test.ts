@@ -33,7 +33,7 @@ describe('makeDefaultOneBotConfig', () => {
         expect(config.networks.wsServers[0].reportSelfMessage).toBe(false);
         expect(config.networks.wsClients).toEqual([]);
         expect(config.statusCommand).toEqual({
-            enabled: true,
+            enabled: false,
             swallow: false,
             cooldownSeconds: 5,
             trigger: '#sl',
@@ -311,7 +311,7 @@ describe('loadOneBotConfig', () => {
         expect(onDisk.wsServers).toBeUndefined();
         // statusCommand is materialised with defaults on a fresh install.
         expect(onDisk.statusCommand).toEqual({
-            enabled: true,
+            enabled: false,
             swallow: false,
             cooldownSeconds: 5,
             trigger: '#sl',
@@ -331,7 +331,7 @@ describe('loadOneBotConfig', () => {
         );
 
         const config = loadOneBotConfig(uin);
-        expect(config.statusCommand.enabled).toBe(true); // default filled (absent in file)
+        expect(config.statusCommand.enabled).toBe(false); // default filled (absent in file)
         expect(config.statusCommand.swallow).toBe(true); // taken from file
         expect(config.statusCommand.cooldownSeconds).toBe(0); // negative clamped to 0
     });
@@ -586,12 +586,12 @@ describe('loadOneBotConfig', () => {
             path.join(dir, `onebot_${uin}.json`),
             JSON.stringify({
                 networks: { httpServers: [], httpClients: [], wsServers: [], wsClients: [] },
-                statusCommand: { enabled: false },
+                statusCommand: { enabled: true },
             }),
         );
 
         const config = loadOneBotConfig(uin);
-        expect(config.statusCommand.enabled).toBe(false); // from file
+        expect(config.statusCommand.enabled).toBe(true); // from file
         expect(config.statusCommand.trigger).toBe('#sl'); // default
     });
 

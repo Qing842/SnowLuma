@@ -32,7 +32,7 @@ const MAX_PAYLOAD_BYTES_MAX = 2 * 1024 * 1024 * 1024;
 const PER_UIN_SNAPSHOT_MARKER = 'snapshot';
 
 const DEFAULT_STATUS_COMMAND: StatusCommandConfig = {
-    enabled: true,
+    enabled: false,
     swallow: false,
     cooldownSeconds: 5,
     trigger: '#sl',

@@ -14,3 +14,22 @@ describe('normalizeOneBotConfig history sync', () => {
         ).toEqual({ enabled: true });
     });
 });
+
+describe('normalizeOneBotConfig statusCommand', () => {
+    it('defaults statusCommand.enabled to false when omitted', () => {
+        expect(normalizeOneBotConfig({}).statusCommand).toEqual({
+            enabled: false,
+            swallow: false,
+            cooldownSeconds: 5,
+            trigger: '#sl',
+        });
+    });
+
+    it('preserves an explicit statusCommand.enabled opt-in', () => {
+        expect(
+            normalizeOneBotConfig({
+                statusCommand: { enabled: true },
+            }).statusCommand.enabled,
+        ).toBe(true);
+    });
+});

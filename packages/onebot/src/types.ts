@@ -99,7 +99,7 @@ export interface OneBotNetworks {
  * defaults to `#sl` with exact case-insensitive matching.
  */
 export interface StatusCommandConfig {
-    /** Master on/off. Default `true`. */
+    /** Master on/off. Default `false`. */
     enabled: boolean;
     /**
      * When `true`, a matched status command is NOT forwarded to downstream
